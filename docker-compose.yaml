@@ -1,0 +1,78 @@
+services:
+
+  # 1: application
+
+  thesis-app:
+    container_name: thesis-app
+    image: thesis-app
+    hostname: thesis-app
+    restart: unless-stopped
+    volumes:
+      - "./services/thesis-app/config:/container-config"
+      - "./services/thesis-app/data:/container-data"
+    env_file:
+      - ./dev.env
+    networks:
+      thesis-internal:
+        ipv4_address: 10.2.0.201
+    ports:
+       - 5000:5000
+
+  # 2: database
+
+  thesis-db:
+    container_name: thesis-db
+    image: thesis-db
+    hostname: thesis-db
+    restart: unless-stopped
+    volumes:
+      - "./services/thesis-db/config:/container-config"
+      - "./services/thesis-db/data:/container-data"
+    networks:
+      thesis-internal:
+        ipv4_address: 10.2.0.202
+
+  # 3: Samba share for development
+
+  samba:
+    container_name: samba
+    image: samba
+    hostname: samba
+    restart: unless-stopped
+    volumes:
+      - "./services/samba/config:/container-config"
+      - "./services/samba/data:/container-data"
+      - "./services/thesis-app/data/webservice:/samba-share"
+    networks:
+      thesis-internal:
+        ipv4_address: 10.2.0.203
+    ports:
+      - 445:445
+
+  # 4: PGadmin 4 for development
+
+  pgadmin:
+    container_name: pgadmin
+    image: pgadmin
+    hostname: pgadmin
+    restart: unless-stopped
+    volumes:
+      - "./services/pgadmin/config:/container-config"
+      - "./services/pgadmin/data:/container-data"
+    environment:
+      - "PGADMIN_DEFAULT_EMAIL=balint.toth4@stud.uni-corvinus.hu"
+      - "PGADMIN_DEFAULT_PASSWORD=asd"
+      - "PGADMIN_SERVER_JSON_FILE=/container-data/servers.json"
+    networks:
+      thesis-internal:
+        ipv4_address: 10.2.0.204
+    ports:
+      - 8080:80
+
+networks:
+
+  thesis-internal:
+    ipam:
+      config:
+        - subnet: 10.2.0.0/24
+          gateway: 10.2.0.1

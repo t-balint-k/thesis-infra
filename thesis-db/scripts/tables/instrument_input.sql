@@ -1,8 +1,8 @@
-create table securities_input
+create table instrument_input
 (
 	id serial primary key,
 	-- type
-	security_type character varying (16) not null,
+	instrument_type character varying (16) not null,
 	-- meta
 	symbol character varying (50) not null,
 	name character varying (200) null, 

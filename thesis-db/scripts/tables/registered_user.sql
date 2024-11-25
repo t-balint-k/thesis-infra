@@ -1,4 +1,4 @@
-create table registered_users
+create table registered_user
 (
 	id serial primary key,
 	creation_time timestamp default now() not null,

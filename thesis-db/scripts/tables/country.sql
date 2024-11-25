@@ -1,4 +1,4 @@
-create table countries
+create table country
 (
 	id serial primary key,
 	name character varying (100) not null,

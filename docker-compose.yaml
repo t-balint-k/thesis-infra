@@ -1,15 +1,15 @@
 services:
 
-  # 1: application
+  # 1: WebAPI
 
-  thesis-app:
-    container_name: thesis-app
-    image: thesis-app
-    hostname: thesis-app
+  thesis-api:
+    container_name: thesis-api
+    image: thesis-api
+    hostname: thesis-api
     restart: unless-stopped
     volumes:
-      - "./services/thesis-app/config:/container-config"
-      - "./services/thesis-app/data:/container-data"
+      - "./services/thesis-api/config:/container-config"
+      - "./services/thesis-api/data:/container-data"
     env_file:
       - ./dev.env
     networks:
@@ -18,7 +18,7 @@ services:
     ports:
        - 5000:5000
 
-  # 2: database
+  # 2: Database
 
   thesis-db:
     container_name: thesis-db

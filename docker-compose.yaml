@@ -32,7 +32,7 @@ services:
       thesis-internal:
         ipv4_address: 10.2.0.202
 
-  # 3: Samba share for development
+  # 3: Samba share for development (THESIS NON SCOPE)
 
   samba:
     container_name: samba
@@ -42,14 +42,14 @@ services:
     volumes:
       - "./services/samba/config:/container-config"
       - "./services/samba/data:/container-data"
-      - "./services/thesis-app/data/webservice:/samba-share"
+      - "/docker-resources:/samba-share"
     networks:
       thesis-internal:
         ipv4_address: 10.2.0.203
     ports:
       - 445:445
 
-  # 4: PGadmin 4 for development
+  # 4: PGadmin 4 for development (THESIS NON SCOPE)
 
   pgadmin:
     container_name: pgadmin

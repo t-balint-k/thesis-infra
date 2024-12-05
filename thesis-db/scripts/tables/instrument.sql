@@ -17,5 +17,5 @@ create table instrument
 	currency_quote character varying (50) null
 );
 
-CREATE UNIQUE INDEX uix1 ON instrument (symbol, exchange, country) WHERE security_type in ('stocks', 'forex_pairs', 'funds', 'bonds', 'indices', 'etfs', 'commodities');
-CREATE UNIQUE INDEX uix2 ON instrument (symbol, exchange, currency_base, currency_quote) WHERE security_type = 'cryptocurrencies';
+CREATE UNIQUE INDEX uix1 ON instrument (symbol, exchange, country) WHERE instrument_type in ('stocks', 'forex_pairs', 'funds', 'bonds', 'indices', 'etfs', 'commodities');
+CREATE UNIQUE INDEX uix2 ON instrument (symbol, exchange, currency_base, currency_quote) WHERE instrument_type = 'cryptocurrencies';

@@ -1,4 +1,4 @@
-# DATABASE INITIALIZATION DURING FIRST RUNTIME #
+# DATABASE INITIALIZATION DURING FIRST RUNTIME - BÁLINT TÓTH - 2024. 08. 19 #
 
 # as root:
 
@@ -19,4 +19,5 @@ psql thesis
 CREATE USER admin WITH LOGIN SUPERUSER PASSWORD 'asd';
 
 # SOURCES:
+#
 # https://www.postgresql.org/docs/current/database-roles.html

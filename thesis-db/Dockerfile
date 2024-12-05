@@ -19,4 +19,5 @@ USER dock_user:dock_group
 ENTRYPOINT ["/container-config/entrypoint.sh"]
 
 # SOURCES:
+#
 # https://www.postgresql.org/download/linux/debian/

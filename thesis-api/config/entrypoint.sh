@@ -5,8 +5,6 @@
 umask 027
 
 trap 'kill -TERM $PID' TERM INT
-#dotnet run --project /container-data/webservice/thesis_api.csproj &
-#sshd
-sleep infinity &
+dotnet run --project /container-data/webservice/ThesisAPI.csproj &
 PID=$!
 wait $PID
